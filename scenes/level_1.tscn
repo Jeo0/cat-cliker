@@ -1,0 +1,175 @@
+[gd_scene load_steps=21 format=3 uid="uid://cylyrh62bifpt"]
+
+[ext_resource type="Texture2D" uid="uid://1k048gq8wjiu" path="res://resources/game scenes/img/BG.png" id="1_2y5yt"]
+[ext_resource type="Texture2D" uid="uid://d2c0cg58nwhd4" path="res://resources/game scenes/img/cat4.png" id="2_2os1m"]
+[ext_resource type="Script" uid="uid://2ym18inrnvse" path="res://scripts/level1_bg.gd" id="2_x2xxo"]
+[ext_resource type="AudioStream" uid="uid://bxunglgira77n" path="res://resources/game scenes/audio/bg sound.mp3" id="3_2cbcq"]
+[ext_resource type="Script" uid="uid://c1l1gqrxq7ry3" path="res://scripts/cat_4.gd" id="3_e3sih"]
+[ext_resource type="Texture2D" uid="uid://b5m5hmf2qv4lh" path="res://resources/game scenes/img/cat3.png" id="4_go7sj"]
+[ext_resource type="Texture2D" uid="uid://fsid53ets85w" path="res://resources/animations/deathAnim0000.png" id="5_1s4pk"]
+[ext_resource type="Script" uid="uid://ch5mmpaevejjx" path="res://scripts/cat_3.gd" id="5_2y5yt"]
+[ext_resource type="Texture2D" uid="uid://y42jgjt16nr6" path="res://resources/game scenes/img/cat2.png" id="6_7gny6"]
+[ext_resource type="Script" uid="uid://byifpe0j63adx" path="res://scripts/cat_1.gd" id="6_fcfvj"]
+[ext_resource type="Texture2D" uid="uid://u2mj2v8ol3ya" path="res://resources/animations/deathAnim0001.png" id="6_x2xxo"]
+[ext_resource type="Texture2D" uid="uid://5kyrp7nax4wn" path="res://resources/animations/deathAnim0002.png" id="7_2cbcq"]
+[ext_resource type="Script" uid="uid://dril4kh8rhx54" path="res://scripts/cat_2.gd" id="7_2os1m"]
+[ext_resource type="Texture2D" uid="uid://fgm71t3gvgyh" path="res://resources/game scenes/img/cat1.png" id="8_2aecg"]
+[ext_resource type="Texture2D" uid="uid://cjbgemxjwd8dc" path="res://resources/animations/deathAnim0003.png" id="8_isj1j"]
+[ext_resource type="Texture2D" uid="uid://c82c3ft142nsk" path="res://resources/animations/deathAnim0004.png" id="9_so66j"]
+[ext_resource type="AudioStream" uid="uid://jd7t4is566qw" path="res://resources/game scenes/audio/maaaahh.wav" id="10_2y5yt"]
+[ext_resource type="Texture2D" uid="uid://v41xufwe6a0v" path="res://resources/animations/deathAnim0005.png" id="10_tr1x6"]
+[ext_resource type="Texture2D" uid="uid://bpt4v2vy65t7f" path="res://resources/animations/deathAnim0006.png" id="11_d5akn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2y5yt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1s4pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x2xxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2cbcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_isj1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_so66j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tr1x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_d5akn")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}]
+
+[node name="level1" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+
+[node name="BG" type="Sprite2D" parent="Background"]
+position = Vector2(116.5, -75.6088)
+scale = Vector2(1.80416, 1.80416)
+texture = ExtResource("1_2y5yt")
+script = ExtResource("2_x2xxo")
+
+[node name="bg_sound" type="AudioStreamPlayer2D" parent="Background/BG"]
+stream = ExtResource("3_2cbcq")
+volume_db = -11.886
+
+[node name="cat4" type="Node2D" parent="Background/BG"]
+position = Vector2(-1321.17, -894.021)
+scale = Vector2(2.53084, 2.53084)
+
+[node name="cat4" type="Sprite2D" parent="Background/BG/cat4"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+texture = ExtResource("2_2os1m")
+script = ExtResource("3_e3sih")
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="Background/BG/cat4"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+stream = ExtResource("10_2y5yt")
+volume_db = -5.257
+
+[node name="Timer" type="Timer" parent="Background/BG/cat4"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/BG/cat4"]
+position = Vector2(602, 411)
+scale = Vector2(0.0666335, 0.0666335)
+sprite_frames = SubResource("SpriteFrames_2y5yt")
+animation = &"death"
+frame = 3
+frame_progress = 0.795976
+
+[node name="cat3" type="Node2D" parent="Background/BG"]
+position = Vector2(-1321.17, -894.021)
+scale = Vector2(2.53084, 2.53084)
+
+[node name="cat3" type="Sprite2D" parent="Background/BG/cat3"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+texture = ExtResource("4_go7sj")
+script = ExtResource("5_2y5yt")
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="Background/BG/cat3"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+stream = ExtResource("10_2y5yt")
+volume_db = -5.257
+
+[node name="Timer" type="Timer" parent="Background/BG/cat3"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/BG/cat3"]
+position = Vector2(536, 443)
+scale = Vector2(0.071942, 0.071942)
+sprite_frames = SubResource("SpriteFrames_2y5yt")
+animation = &"death"
+frame = 3
+frame_progress = 0.795976
+
+[node name="cat2" type="Node2D" parent="Background/BG"]
+position = Vector2(-1321.17, -894.021)
+scale = Vector2(2.53084, 2.53084)
+
+[node name="cat2" type="Sprite2D" parent="Background/BG/cat2"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+texture = ExtResource("6_7gny6")
+script = ExtResource("7_2os1m")
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="Background/BG/cat2"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+stream = ExtResource("10_2y5yt")
+volume_db = -5.257
+
+[node name="Timer" type="Timer" parent="Background/BG/cat2"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/BG/cat2"]
+position = Vector2(629, 491)
+scale = Vector2(0.0826337, 0.0826337)
+sprite_frames = SubResource("SpriteFrames_2y5yt")
+animation = &"death"
+frame = 3
+frame_progress = 0.795976
+
+[node name="cat1" type="Node2D" parent="Background/BG"]
+position = Vector2(-1321.17, -894.021)
+scale = Vector2(2.53084, 2.53084)
+
+[node name="cat1" type="Sprite2D" parent="Background/BG/cat1"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+texture = ExtResource("8_2aecg")
+script = ExtResource("6_fcfvj")
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="Background/BG/cat1"]
+position = Vector2(522.028, 353.25)
+scale = Vector2(0.395125, 0.395125)
+stream = ExtResource("10_2y5yt")
+volume_db = -5.257
+
+[node name="Timer" type="Timer" parent="Background/BG/cat1"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/BG/cat1"]
+position = Vector2(564, 508)
+scale = Vector2(0.0507813, 0.0507813)
+sprite_frames = SubResource("SpriteFrames_2y5yt")
+animation = &"death"
+frame = 3
+frame_progress = 0.795976
+
+[connection signal="timeout" from="Background/BG/cat4/Timer" to="Background/BG/cat4/cat4" method="_on_timer_timeout"]
+[connection signal="timeout" from="Background/BG/cat3/Timer" to="Background/BG/cat3/cat3" method="_on_timer_timeout"]
+[connection signal="timeout" from="Background/BG/cat2/Timer" to="Background/BG/cat2/cat2" method="_on_timer_timeout"]
+[connection signal="timeout" from="Background/BG/cat1/Timer" to="Background/BG/cat1/cat1" method="_on_timer_timeout"]
