@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cylyrh62bifpt"]
+[gd_scene load_steps=22 format=3 uid="uid://cylyrh62bifpt"]
 
 [ext_resource type="Texture2D" uid="uid://1k048gq8wjiu" path="res://resources/game scenes/img/BG.png" id="1_2y5yt"]
 [ext_resource type="Texture2D" uid="uid://d2c0cg58nwhd4" path="res://resources/game scenes/img/cat4.png" id="2_2os1m"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://jd7t4is566qw" path="res://resources/game scenes/audio/maaaahh.wav" id="10_2y5yt"]
 [ext_resource type="Texture2D" uid="uid://v41xufwe6a0v" path="res://resources/animations/deathAnim0005.png" id="10_tr1x6"]
 [ext_resource type="Texture2D" uid="uid://bpt4v2vy65t7f" path="res://resources/animations/deathAnim0006.png" id="11_d5akn"]
+[ext_resource type="Script" uid="uid://b6y8tb8oaf1qs" path="res://scripts/level_manger.gd" id="20_isj1j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2y5yt"]
 animations = [{
@@ -61,10 +62,6 @@ scale = Vector2(1.80416, 1.80416)
 texture = ExtResource("1_2y5yt")
 script = ExtResource("2_x2xxo")
 
-[node name="bg_sound" type="AudioStreamPlayer2D" parent="Background/BG"]
-stream = ExtResource("3_2cbcq")
-volume_db = -11.886
-
 [node name="cat4" type="Node2D" parent="Background/BG"]
 position = Vector2(-1321.17, -894.021)
 scale = Vector2(2.53084, 2.53084)
@@ -79,7 +76,7 @@ script = ExtResource("3_e3sih")
 position = Vector2(522.028, 353.25)
 scale = Vector2(0.395125, 0.395125)
 stream = ExtResource("10_2y5yt")
-volume_db = -5.257
+volume_db = -16.287
 
 [node name="Timer" type="Timer" parent="Background/BG/cat4"]
 
@@ -105,7 +102,7 @@ script = ExtResource("5_2y5yt")
 position = Vector2(522.028, 353.25)
 scale = Vector2(0.395125, 0.395125)
 stream = ExtResource("10_2y5yt")
-volume_db = -5.257
+volume_db = -15.499
 
 [node name="Timer" type="Timer" parent="Background/BG/cat3"]
 
@@ -131,7 +128,7 @@ script = ExtResource("7_2os1m")
 position = Vector2(522.028, 353.25)
 scale = Vector2(0.395125, 0.395125)
 stream = ExtResource("10_2y5yt")
-volume_db = -5.257
+volume_db = -15.499
 
 [node name="Timer" type="Timer" parent="Background/BG/cat2"]
 
@@ -157,7 +154,7 @@ script = ExtResource("6_fcfvj")
 position = Vector2(522.028, 353.25)
 scale = Vector2(0.395125, 0.395125)
 stream = ExtResource("10_2y5yt")
-volume_db = -5.257
+volume_db = -15.499
 
 [node name="Timer" type="Timer" parent="Background/BG/cat1"]
 
@@ -169,7 +166,20 @@ animation = &"death"
 frame = 3
 frame_progress = 0.795976
 
+[node name="LevelManger" type="Node" parent="."]
+script = ExtResource("20_isj1j")
+
+[node name="bg_sound" type="AudioStreamPlayer2D" parent="LevelManger"]
+position = Vector2(568.06, 323.375)
+scale = Vector2(0.712869, 0.712869)
+stream = ExtResource("3_2cbcq")
+volume_db = -14.886
+
+[node name="end_timer" type="Timer" parent="LevelManger"]
+wait_time = 1.399
+
 [connection signal="timeout" from="Background/BG/cat4/Timer" to="Background/BG/cat4/cat4" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/BG/cat3/Timer" to="Background/BG/cat3/cat3" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/BG/cat2/Timer" to="Background/BG/cat2/cat2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Background/BG/cat1/Timer" to="Background/BG/cat1/cat1" method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelManger/end_timer" to="LevelManger" method="_on_end_timer_timeout"]

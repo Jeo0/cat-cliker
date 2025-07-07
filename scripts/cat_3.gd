@@ -4,6 +4,8 @@ extends Sprite2D
 @onready var sfx_death: AudioStreamPlayer2D = $"../sfx_death"
 @onready var timer: Timer = $"../Timer"
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var level_manger: Node = $"../../../../LevelManger"
+@onready var end_timer: Timer = $"../../../../LevelManger/end_timer"
 
 func _ready():
 	animated_sprite_2d.hide();
@@ -15,6 +17,7 @@ func _input(event):
 			print("Cat3 clicked: Whumaba");
 
 			sfx_death.play();
+			level_manger.add_point()
 
 			# play death animation
 			self.hide()
